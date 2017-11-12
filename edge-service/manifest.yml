@@ -13,4 +13,4 @@ applications:
    - discovery-service
    - config-service
    - user-service
-   - rabbitmq
+  # - rabbitmq

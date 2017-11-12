@@ -15,5 +15,5 @@ applications:
    - catalog-db
    - catalog-redis
    - user-service
-   - rabbitmq
-   - zipkin-server
+   #- rabbitmq
+   #- zipkin-server

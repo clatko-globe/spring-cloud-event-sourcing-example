@@ -14,4 +14,4 @@ applications:
    - config-service
    - account-db
    - user-service
-   - zipkin-server
+   #- zipkin-server

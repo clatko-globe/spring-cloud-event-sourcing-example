@@ -13,5 +13,5 @@ applications:
    - config-service
    - user-service
    - edge-service
-   - rabbitmq
-   - zipkin-server
+   #- rabbitmq
+   #- zipkin-server

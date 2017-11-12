@@ -13,5 +13,5 @@ applications:
    - discovery-service
    - config-service
    - user-db
-   - rabbitmq
-   - zipkin-server
+  # - rabbitmq
+  # - zipkin-server
