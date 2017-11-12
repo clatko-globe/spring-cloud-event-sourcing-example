@@ -5,7 +5,7 @@ spring:
     active: development
 
 server:
-  port: 0
+  port: 8090
 
 ---
 spring:

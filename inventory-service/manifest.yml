@@ -14,5 +14,5 @@ applications:
    - config-service
    - user-service
    - inventory-db
-   - rabbitmq
-   - zipkin-server
+   #- rabbitmq
+   #- zipkin-server
