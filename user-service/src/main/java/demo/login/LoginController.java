@@ -28,11 +28,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import java.security.Principal;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
 @Controller
 
 @SessionAttributes("authorizationRequest")
 public class LoginController {
-
+	Logger logger = LoggerFactory.getLogger(LoginController.class);
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -50,6 +55,13 @@ public class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(HttpServletRequest request, HttpServletResponse response, Model model) {
 
+    	     Principal principal = request.getUserPrincipal();
+         if (principal != null) {
+                 logger.error("@Principal is :" + principal.getName());
+         } else {
+                 logger.error("@Principal is null");
+         }
+         
         HttpRequestResponseHolder responseHolder = new HttpRequestResponseHolder(request, response);
         sessionRepository.loadContext(responseHolder);
 
@@ -86,6 +98,14 @@ public class LoginController {
         sessionRepository.saveContext(SecurityContextHolder.getContext(), responseHolder.getRequest(), responseHolder.getResponse());
         model.addAttribute("authorizationRequest", authRequest);
 
+        principal = request.getUserPrincipal();
+        if (principal != null) {
+                logger.error("@Principal is :" + principal.getName());
+        } else {
+                logger.error("@Principal is null");
+        }
+
+        
         // Return the token authorization view
         return "authorize";
     }

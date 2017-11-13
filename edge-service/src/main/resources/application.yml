@@ -21,6 +21,8 @@ security:
   oauth2:
     resource:
       userInfoUri: ${vcap.services.user-service.credentials.uri:http://localhost:8181}/uaa/user
+      #fix for login oauth failure in spring boot 1.5 
+      filter-order: 3
   ignored: /catalog/**
 hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
 ribbon:
@@ -58,6 +60,9 @@ security:
   oauth2:
     resource:
       userInfoUri: http://localhost:8181/uaa/user
+      #fix for login oauth failure in spring boot 1.5 
+      filter-order: 3
+      
   ignored: /catalog/**
 eureka:
   instance:
