@@ -1,16 +1,20 @@
 ---
 applications:
 - name: catalog-service
-  memory: 850mb
+  memory: 1G
   timeout: 180
   instances: 1
-  host: catalog-service-${random-word}
+  host: catalog-service-mkim
   path: target/catalog-service-0.0.1-SNAPSHOT.jar
   env:
     SPRING_PROFILES_ACTIVE: cloud
   services:
-   - discovery-service
-   - config-service
-   - catalog-db
-   - catalog-redis
-   - user-service
+  - catalog-db
+  - catalog-redis
+  - user-service
+  - config-service
+  - discovery-service
+  - circuit-breaker
+  env:
+    TRUST_CERTS: api.sys.sec.mzdemo.net
+

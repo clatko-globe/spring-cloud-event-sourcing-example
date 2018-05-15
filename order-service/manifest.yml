@@ -4,13 +4,15 @@ applications:
   memory: 850mb
   timeout: 180
   instances: 1
-  host: order-service-${random-word}
+  host: order-service-mkim
   path: target/order-service-0.0.1-SNAPSHOT.jar
   env:
     SPRING_PROFILES_ACTIVE: cloud
   services:
    - discovery-service
    - config-service
+   - circuit-breaker
    - user-service
    - order-db
-
+  env:
+    TRUST_CERTS: api.sys.sec.mzdemo.net

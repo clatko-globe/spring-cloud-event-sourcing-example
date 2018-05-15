@@ -3,13 +3,15 @@ applications:
 - name: shopping-cart-service
   memory: 1024M
   instances: 1
-  timeout: 180
-  host: shopping-cart-service-${random-word}
+  host: shopping-cart-service-mkim
   path: target/shopping-cart-service-0.0.1-SNAPSHOT.jar
   env:
     SPRING_PROFILES_ACTIVE: cloud
   services:
    - discovery-service
    - config-service
+   - circuit-breaker
    - user-service
    - shopping-cart-db
+  env:
+    TRUST_CERTS: api.sys.sec.mzdemo.net

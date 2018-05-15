@@ -1,10 +1,10 @@
 ---
 applications:
 - name: account-service
-  memory: 850mb
+  memory: 1GB
   instances: 1
   timeout: 180
-  host: account-service-${random-word}
+  host: account-service-mkim
   path: target/account-service-0.0.1-SNAPSHOT.jar
   env:
     SPRING_PROFILES_ACTIVE: cloud
@@ -12,4 +12,7 @@ applications:
    - discovery-service
    - config-service
    - account-db
+   - circuit-breaker
    - user-service
+  env:
+    TRUST_CERTS: api.sys.sec.mzdemo.net

@@ -3,12 +3,13 @@ applications:
 - name: user-service
   memory: 1024M
   instances: 1
-  timeout: 180
-  host: user-service-${random-word}
+  host: user-service-mkim
   path: target/user-service-0.0.1-SNAPSHOT.jar
-  env:
-    SPRING_PROFILES_ACTIVE: cloud
   services:
-   - discovery-service
-   - config-service
-   - user-db
+  - config-service
+  - discovery-service
+  - circuit-breaker
+  - user-db
+  env:
+    TRUST_CERTS: api.sys.sec.mzdemo.net
+

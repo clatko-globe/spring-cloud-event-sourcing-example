@@ -3,7 +3,7 @@ applications:
 - name: inventory-service
   memory: 850mb
   instances: 1
-  host: inventory-service-${random-word}
+  host: inventory-service-mkim
   path: target/inventory-service-0.0.1-SNAPSHOT.jar
   timeout: 180
   env:
@@ -11,5 +11,9 @@ applications:
   services:
    - discovery-service
    - config-service
+   - circuit-breaker
+   - inventory-db
    - user-service
    - inventory-db
+  env:
+    TRUST_CERTS: api.sys.sec.mzdemo.net
